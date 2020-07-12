@@ -1,0 +1,85 @@
+
+/* navbar */
+.navbar {
+  padding: 0 0 .10rem;
+}
+
+.navbar-brand {
+  color: #fff;
+  font-size: 2.0rem;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: #c7c7c7;
+  /* font-family: "Montserrat-light"; */
+}
+
+.black-bg {
+    background-color: #231F20;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.center-text {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-top: 3rem;
+}
+
+.welcomeParagraph {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-top: 3rem;
+}
+
+.container-fluid {
+  padding: 7% 15%;
+}
+
+.list-styling {
+  text-align: center;
+  list-style: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+}
+ /* Carousel */
+ .site-info-image {
+    width:50%;
+    height: 50%;
+    margin: auto;
+    display: block;
+ }
+ /* about me */
+ .about-me-image {
+   margin: auto;
+ }
+
+ /* Social Media */
+
+ .social-icon {
+  margin: 20px 10px;
+  font-size: 2rem;
+}
