@@ -51,6 +51,10 @@ h2 {
   font-weight: bold;
 }
 
+.cursive {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+}
 .padding-top {
   padding-top: 3rem;
 }
@@ -82,4 +86,14 @@ h2 {
  .social-icon {
   margin: 20px 10px;
   font-size: 2rem;
+}
+
+.float_l {
+  float: left;
+  margin: 10px;
+}
+
+.float_r {
+  float: right;
+  margin: 10px
 }
