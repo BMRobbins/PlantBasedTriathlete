@@ -10,8 +10,16 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-//mongoose.connect("mongodb://localhost:27017l/todolistDB", {useUnifiedTopology: true , useNewUrlParser:true, useFindAndModify: false});
+mongoose.connect("mongodb://localhost:27017l/PlantBasedTriathlete", {useUnifiedTopology: true , useNewUrlParser:true, useFindAndModify: false});
 
+const blogSchema = {
+  title: String,
+  date: Date,
+  content: String,
+  img: String
+};
+
+const Blog = mongoose.model("Blog", blogSchema);
 
 // Home endPoints
 app.get("/", function(req, res) {
@@ -21,15 +29,37 @@ app.get("/", function(req, res) {
 
 //Blog endPoints
 app.get("/blog", function(req, res) {
-    res.render("blog");
+  Blog.find({}, function(err, blogs) {
+    res.render("blog", {
+      blogs: blogs
+    });
+  })
 });
 
 app.get("/blog:blogId", function(req, res) {
     res.render("blog");
 });
 
+app.get("/compose", function(req, res){
+  res.render("compose");
+});
 
-// Recipes endPoints 
+app.post("/compose", function(req, res){
+  const blog = new Blog({
+      title: req.body.postTitle,
+      date: Date.now(),
+      content: req.body.postBody,
+      img: req.body.postImg
+  });
+  blog.save(function(err){
+    if(!err) {
+        res.redirect("/");
+    }
+  });
+});
+
+
+// Recipes endPoints
 app.get("/recipes", function(req, res) {
     res.render("recipes");
 });
