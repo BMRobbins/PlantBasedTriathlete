@@ -7,16 +7,17 @@
     <img src="imgs/blog/blogProfileImage.jpg" class="mr-3" alt="profileImage">
     <div class="media-body">
       <h2 class="mt-0"><%= blog.title %>:</h2>
-      <p><em><%= blog.date %></em></p>
+      <p><em><%= blog.date.toDateString() %></em></p>
       <% if(counter % 2 != 0) {%>
-        <img class="float_r" src="/imgs/blog/<%= blog.img %>" alt="DaniOnRock">
+        <img class="float_r" style="width:35%" src="/imgs/blog/<%= blog.img %>" alt="DaniOnRock">
       <% }else {%>
-        <img class="float_l" src="/imgs/blog/<%= blog.img %>" alt="DaniOnRock">
+        <img class="float_l" style="width:35%" src="/imgs/blog/<%= blog.img %>" alt="DaniOnRock">
       <% }%>
         <p class="fontMontserret"><%= blog.content %></p>
       </div>
-      <% counter++; %>  
+      <% counter++; %>
     </div>
+    <br>
     <% }) %>
   </div>
 <%- include("partials/footer") -%>

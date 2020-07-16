@@ -33,11 +33,7 @@ app.get("/blog", function(req, res) {
     res.render("blog", {
       blogs: blogs
     });
-  })
-});
-
-app.get("/blog:blogId", function(req, res) {
-    res.render("blog");
+  }).sort({date: 1});
 });
 
 app.get("/compose", function(req, res){
