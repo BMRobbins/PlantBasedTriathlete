@@ -25,7 +25,8 @@ const recipeSchema = {
   img: String,
   ingredients:[String],
   directions:[String],
-  catagory:String
+  catagory:String,
+  video:String
 };
 
 const Blog = mongoose.model("Blog", blogSchema);
