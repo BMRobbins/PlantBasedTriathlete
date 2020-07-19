@@ -70,27 +70,27 @@ app.post("/compose", function(req, res){
 // Recipes endPoints
 app.get("/recipes", function(req, res) {
     console.log("All Recipes");
-    res.render("recipes");
+    res.render("recipes", {relativePath: ""});
 });
 
 app.get("/recipes/breakfast", function(req, res) {
     console.log("Breakfast");
-    res.render("recipes");
+    res.render("recipes", {relativePath: "../"});
 });
 
 app.get("/recipes/lunch", function(req, res) {
     console.log("Lunch");
-    res.render("recipes");
+    res.render("recipes", {relativePath: "../"});
 });
 
 app.get("/recipes/dinner", function(req, res) {
     console.log("Dinner");
-    res.render("recipes");
+    res.render("recipes", {relativePath: "../"});
 });
 
 app.get("/recipes/snackanddesserts", function(req, res) {
     console.log("Snacks");
-    res.render("recipes");
+    res.render("recipes", {relativePath: "../"});
 });
 
 app.get("/recipes/recipe:recipeId", function(req, res) {
