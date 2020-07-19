@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const app = express();
+const path = require('path');
 
 
 app.set('view engine', 'ejs');
@@ -19,7 +20,18 @@ const blogSchema = {
   img: String
 };
 
+const recipeSchema = {
+  title: String,
+  img: String,
+  ingredients:[String],
+  directions:[String],
+  catagory:String
+};
+
 const Blog = mongoose.model("Blog", blogSchema);
+const Recipe = mongoose.model("Recipe",recipeSchema);
+
+
 
 // Home endPoints
 app.get("/", function(req, res) {
@@ -57,22 +69,27 @@ app.post("/compose", function(req, res){
 
 // Recipes endPoints
 app.get("/recipes", function(req, res) {
+    console.log("All Recipes");
     res.render("recipes");
 });
 
 app.get("/recipes/breakfast", function(req, res) {
+    console.log("Breakfast");
     res.render("recipes");
 });
 
 app.get("/recipes/lunch", function(req, res) {
+    console.log("Lunch");
     res.render("recipes");
 });
 
 app.get("/recipes/dinner", function(req, res) {
+    console.log("Dinner");
     res.render("recipes");
 });
 
-app.get("/recipes/desert", function(req, res) {
+app.get("/recipes/snackanddesserts", function(req, res) {
+    console.log("Snacks");
     res.render("recipes");
 });
 
