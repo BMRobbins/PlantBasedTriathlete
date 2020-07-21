@@ -2,17 +2,19 @@
 <h1 class="center-text padding-top">Recipes</h1>
 <div class="container-fluid">
     <div class="row justify-content-center">
+      <%  recipes.ingredients.forEach(function(recipe){ %>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
-          <img src="<% relativePath %>/imgs/recipe/BeanCeviche.jpg" class="card-img-top" alt="#">
+          <img src="<%= relativePath %><%= recipe.img %>" class="card-img-top" alt="#">
           <div class="card-body">
-            <h5 class="card-title center-text">Bean Ceviche</h5>
+            <h5 class="card-title center-text"><%= recipe.title %></h5>
           </div>
           <div class="row justify-content-center padding-bottom">
-            <a href="#" class="btn btn-primary">Get Recipe</a>
+            <a href="/recipes/recipe/<%= recipe.path %>" class="btn btn-primary">Get Recipe</a>
           </div>
         </div>
       </div>
+      <% }) %>
     </div>
 </div>
 

@@ -23,6 +23,7 @@ const blogSchema = {
 const recipeSchema = {
   title: String,
   img: String,
+  path: String,
   ingredients:[String],
   directions:[String],
   catagory:String,

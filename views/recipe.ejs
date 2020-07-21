@@ -1,25 +1,20 @@
 <%- include("partials/header", {relativePath: relativePath }) -%>
-<h1 class="center-text padding-top margin">Bean Ceviche</h1>
-<img src="<%= relativePath%>/imgs/recipe/BeanCeviche.jpg" class="recipeImage" alt="BeanCeviche">
+<h1 class="center-text padding-top margin"><%= recipe.title %></h1>
+<img src="<%= relativePath%><%= recipe.img %>" class="recipeImage" alt="<%= recipe.img %>">
 <div class="container margin">
   <h2>Ingredients:</h2>
   <ul>
-    <li>2 cans Black Beans</li>
-    <li>Half bunch of cilantro</li>
-    <li>Teaspoon Red Wine Vinegar</li>
-    <li>Half squeezed Lime Juice (1/2 lemon juice will also work)</li>
-    <li>3 Large Tomatoes</li>
-    <li>2 Large Avocados</li>
-    <li>3 Jalapenos </li>
-    <li>Salt and Pepper to taste</li>
+    <%  recipe.ingredients.forEach(function(ingredient){ %>
+        <li><%= ingredient %></li>
+    <% }) %>
   </ul>
 </div>
 <div class="container margin">
   <h2>Directions:</h2>
   <ol>
-    <li>Chop all ingredients and combine into large bowl.</li>
-    <li>Cover the bowl</li>
-    <li>Put in the refrigerator for 4 hours</li>
+    <%  recipe.directions.forEach(function(direction){ %>
+      <li><%= direction %></li>
+    <% }) %>
   </ol>
 </div>
 
