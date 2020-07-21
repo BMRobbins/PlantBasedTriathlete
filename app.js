@@ -94,8 +94,8 @@ app.get("/recipes/snackanddesserts", function(req, res) {
     res.render("recipes", {relativePath: "../"});
 });
 
-app.get("/recipes/recipe:recipeId", function(req, res) {
-    res.render("recipes");
+app.get("/recipes/recipe/:recipeId", function(req, res) {
+    res.render("recipe",{relativePath: "../../"});
 });
 
 app.listen(3000, function() {
