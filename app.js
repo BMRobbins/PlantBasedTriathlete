@@ -26,7 +26,7 @@ const recipeSchema = {
   path: String,
   ingredients:[String],
   directions:[String],
-  catagory:String,
+  catagory:[String],
   video:String
 };
 
@@ -50,11 +50,11 @@ app.get("/blog", function(req, res) {
   }).sort({date: 1});
 });
 
-app.get("/compose", function(req, res){
-  res.render("compose");
+app.get("/composeblog", function(req, res){
+  res.render("composeblog");
 });
 
-app.post("/compose", function(req, res){
+app.post("/composeblog", function(req, res){
   const blog = new Blog({
       title: req.body.postTitle,
       date: Date.now(),
@@ -71,32 +71,82 @@ app.post("/compose", function(req, res){
 
 // Recipes endPoints
 app.get("/recipes", function(req, res) {
-    console.log("All Recipes");
-    res.render("recipes", {relativePath: ""});
+  Recipe.find({}, function(err, recipes) {
+    res.render("recipes", {
+      recipes: recipes,
+      relativePath: "../"
+    });
+  })
 });
 
 app.get("/recipes/breakfast", function(req, res) {
-    console.log("Breakfast");
-    res.render("recipes", {relativePath: "../"});
+  Recipe.find({catagory:"breakfast"}, function(err, recipes) {
+    res.render("recipes", {
+      recipes: recipes,
+      relativePath: "../"
+    });
+  })
 });
 
 app.get("/recipes/lunch", function(req, res) {
-    console.log("Lunch");
-    res.render("recipes", {relativePath: "../"});
+  Recipe.find({catagory:"lunch"}, function(err, recipes) {
+    res.render("recipes", {
+      recipes: recipes,
+      relativePath: "../"
+    });
+  })
 });
 
 app.get("/recipes/dinner", function(req, res) {
-    console.log("Dinner");
-    res.render("recipes", {relativePath: "../"});
+  Recipe.find({catagory:"dinner"}, function(err, recipes) {
+    res.render("recipes", {
+      recipes: recipes,
+      relativePath: "../"
+    });
+  })
 });
 
 app.get("/recipes/snackanddesserts", function(req, res) {
-    console.log("Snacks");
-    res.render("recipes", {relativePath: "../"});
+  Recipe.find({catagory:"snack"}, function(err, recipes) {
+    res.render("recipes", {
+      recipes: recipes,
+      relativePath: "../"
+    });
+  })
 });
 
 app.get("/recipes/recipe/:recipeId", function(req, res) {
-    res.render("recipe",{relativePath: "../../"});
+  const recipePath = req.params.recipeId;
+  Recipe.findOne({path: recipePath}, function(err, recipe) {
+    res.render("recipe", {
+      recipe: recipe,
+      relativePath: "../../"
+    });
+  })
+});
+
+app.get("/composerecipe", function(req, res){
+  res.render("composerecipe");
+});
+
+app.post("/composerecipe", function(req, res){
+  var ingredients = req.body.postIngredients.toString().split("|");
+  var directions = req.body.postDirections.toString().split("|");
+  var catagories = req.body.postCatagory.toString().split(",");
+  const recipe = new Recipe({
+       title: req.body.postTitle,
+       img: req.body.postImg,
+       path: req.body.postPath,
+       ingredients: ingredients,
+       directions: directions,
+       catagory: catagories,
+       video: req.body.postVideo
+  });
+  recipe.save(function(err){
+     if(!err) {
+         res.redirect("/");
+     }
+   });
 });
 
 app.listen(3000, function() {

@@ -1,0 +1,28 @@
+<%- include("partials/header", {relativePath: ""}); -%>
+    <h1>Compose Recipe</h1>
+    <form class="" action="/composerecipe" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="postTitle">
+        <label>Image Path</label>
+        <input class="form-control" type="text" name="postImg">
+        <label>URL Path</label>
+        <input class="form-control" type="text" name="postPath">
+        <label>Ingredients</label>
+        <textarea class="form-control" name="postIngredients" rows="5" cols="30"></textarea>
+        <label>Directions</label>
+        <textarea class="form-control" name="postDirections" rows="5" cols="30"></textarea>
+        <label for="postCatagory">Recipe Catagory (Hold shift to select more than one)</label><br>
+        <select multiple class="formControl" id="catagory" name="postCatagory">
+          <option>breakfast</option>
+          <option>lunch</option>
+          <option>dinner</option>
+          <option>snack</option>
+        </select><br>
+        <label>Video Url</label>
+        <input class="form-control" type="text" name="postVideo">
+      </div>
+      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+    </form>
+
+<%- include("partials/footer"); -%>
