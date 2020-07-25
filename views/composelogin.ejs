@@ -1,0 +1,16 @@
+<%- include("partials/header", {relativePath: relativePath }) -%>
+<h1 class="center-text padding-top margin">Login</h1>
+<form class="form-signin margin" action="/composelogin" method="post">
+ <label for="userName" class="sr-only">Username</label>
+ <input type="text" id="userName" name="username" class="form-control" placeholder="Username" required="true" autofocus="">
+ <label for="inputPassword" class="sr-only">Password</label>
+ <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="true">
+ <div class="checkbox mb-3">
+    <input type="radio" id="composerecipe" name="compose" value="composerecipe" checked>
+    <label for="composerecipe">Create Recipe</label><br>
+    <input type="radio" id="composeblog" name="compose" value="composeblog">
+    <label for="composeblog">Create Blog Post</label>
+ </div>
+ <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+<%- include("partials/footer") -%>

@@ -1,0 +1,10 @@
+<%- include("partials/header", {relativePath: relativePath }) -%>
+<h1 class="center-text padding-top margin">Create User</h1>
+<form class="form-signin margin" action="/createuser" method="post">
+ <label for="userName" class="sr-only">Username</label>
+ <input type="text" id="userName" name="username" class="form-control" placeholder="Username" required="true" autofocus="">
+ <label for="inputPassword" class="sr-only">Password</label>
+ <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="true">
+ <button class="btn btn-lg btn-primary btn-block" type="submit">Create User</button>
+</form>
+<%- include("partials/footer") -%>

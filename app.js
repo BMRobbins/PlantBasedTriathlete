@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const _ = require("lodash");
 const app = express();
 const path = require('path');
+const bcrypt = require('bcrypt');
+const saltRounds = 15;
 
 
 app.set('view engine', 'ejs');
@@ -30,8 +32,14 @@ const recipeSchema = {
   video:String
 };
 
+const userSchema = {
+  username: String,
+  password: String
+}
+
 const Blog = mongoose.model("Blog", blogSchema);
 const Recipe = mongoose.model("Recipe",recipeSchema);
+const User = mongoose.model("User", userSchema);
 
 
 
@@ -48,10 +56,6 @@ app.get("/blog", function(req, res) {
       blogs: blogs
     });
   }).sort({date: 1});
-});
-
-app.get("/composeblog", function(req, res){
-  res.render("composeblog");
 });
 
 app.post("/composeblog", function(req, res){
@@ -133,10 +137,6 @@ app.get("/recipes/recipe/:recipeId", function(req, res) {
   })
 });
 
-app.get("/composerecipe", function(req, res){
-  res.render("composerecipe");
-});
-
 app.post("/composerecipe", function(req, res){
   var ingredients = req.body.postIngredients.toString().split("|");
   var directions = req.body.postDirections.toString().split("|");
@@ -155,6 +155,45 @@ app.post("/composerecipe", function(req, res){
          res.redirect("/");
      }
    });
+});
+
+// User Portal Endpoints
+app.get("/createuser", function(req, res) {
+  res.render('createuser', {relativePath: ""});
+});
+
+app.post("/createuser", function(req, res) {
+  const hashPassword = bcrypt.hashSync(req.body.password, saltRounds)
+  const user = new User({
+      username: req.body.username,
+      password: hashPassword
+  });
+  user.save(function(err){
+      if(!err) {
+          res.redirect("/composelogin");
+      }
+    });
+});
+
+app.get("/composelogin", function(req, res) {
+  res.render("composelogin", {relativePath: ""});
+});
+
+app.post("/composelogin", function(req, res) {
+  User.findOne({username: req.body.username}, function(err, user) {
+      bcrypt.compare(req.body.password, user.password, function(err, result) {
+        console.log(result);
+        if(result) {
+          if(req.body.compose === "composerecipe") {
+            res.render("composerecipe");
+          } else {
+            res.render("composeblog");
+          }
+        } else {
+          res.redirect("/composelogin");
+        }
+      })
+  })
 });
 
 app.listen(3000, function() {
