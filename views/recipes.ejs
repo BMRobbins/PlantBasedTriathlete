@@ -3,6 +3,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
       <%  recipes.forEach(function(recipe){ %>
+      <% if(recipe !== null || recipe.title !== null || recipe.img !== null || recipe.path !== null) { %>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="card shadow mb-5 bg-white rounded" style="width: 18rem;">
           <img src="<%= relativePath %>/imgs/recipe/<%= recipe.img %>" class="card-img-top" alt="#">
@@ -14,6 +15,7 @@
           </div>
         </div>
       </div>
+      <% } %>
       <% }) %>
     </div>
 </div>

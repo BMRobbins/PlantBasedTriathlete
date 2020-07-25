@@ -5,7 +5,9 @@
   <h2>Ingredients:</h2>
   <ul>
     <%  recipe.ingredients.forEach(function(ingredient){ %>
+      <% if(ingredient !== null) {%>
         <li><%= ingredient %></li>
+      <% } %>
     <% }) %>
   </ul>
 </div>
@@ -13,7 +15,9 @@
   <h2>Directions:</h2>
   <ol>
     <%  recipe.directions.forEach(function(direction){ %>
-      <li><%= direction %></li>
+    <% if(direction !== null) {%>
+        <li><%= direction %></li>
+      <% } %>
     <% }) %>
   </ol>
 </div>

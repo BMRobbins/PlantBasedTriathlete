@@ -115,13 +115,21 @@ app.get("/recipes/snackanddesserts", function(req, res) {
   })
 });
 
+app.get("/recipes/recipe", function(req, res) {
+  res.redirect("/recipes");
+});
+
 app.get("/recipes/recipe/:recipeId", function(req, res) {
   const recipePath = req.params.recipeId;
   Recipe.findOne({path: recipePath}, function(err, recipe) {
-    res.render("recipe", {
-      recipe: recipe,
-      relativePath: "../../"
-    });
+    if(err || recipe === null || recipe.title === null || recipe.img === null || recipe.ingredients === null || recipe.directions === null) {
+      res.redirect("/recipes");
+    } else {
+      res.render("recipe", {
+        recipe: recipe,
+        relativePath: "../../"
+      });
+    }
   })
 });
 
