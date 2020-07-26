@@ -59,6 +59,9 @@ h2 {
   padding-top: 3rem;
 }
 
+.padding-bottom-2 {
+  padding-bottom: 2rem;
+}
 .padding-bottom {
   padding-bottom: 1rem;
 }
@@ -75,8 +78,9 @@ h2 {
 }
  /* Carousel */
  .site-info-image {
-    width:50%;
-    height: 50%;
+    width: auto;
+    height: 375px;
+    max-height: 375px;
     margin: auto;
     display: block;
  }
