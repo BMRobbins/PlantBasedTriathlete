@@ -39,22 +39,52 @@ h1 {
   font-weight: bold;
 }
 
-.welcomeParagraph {
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.2rem;
-}
-
 h2 {
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
+.welcomeParagraph {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.2rem;
+}
+
 .fontMontserret {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
 }
+
+@media(max-width: 544px) {
+  .navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.0rem;
+    font-weight: bold;
+  }
+  .welcomeParagraph {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.0rem;
+  }
+  .fontMontserret {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
+  }
+}
+
 .padding-top {
   padding-top: 3rem;
 }
