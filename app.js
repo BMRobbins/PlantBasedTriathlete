@@ -6,6 +6,8 @@ const app = express();
 const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 15;
+const multer = require('multer');
+const upload = multer({dest: __dirname + '/public/imgs/blog'});
 
 
 app.set('view engine', 'ejs');
@@ -55,15 +57,15 @@ app.get("/blog", function(req, res) {
     res.render("blog", {
       blogs: blogs
     });
-  }).sort({date: 1});
+  }).sort({date: -1});
 });
 
-app.post("/composeblog", function(req, res){
+app.post("/composeblog", upload.single('postImg'), function(req, res){
   const blog = new Blog({
       title: req.body.postTitle,
       date: Date.now(),
       content: req.body.postBody,
-      img: req.body.postImg
+      img: req.file.filename
   });
   blog.save(function(err){
     if(!err) {

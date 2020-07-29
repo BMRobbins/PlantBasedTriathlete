@@ -1,14 +1,14 @@
 
 <%- include("partials/header", {relativePath: ""}); -%>
     <h1>Compose Blog</h1>
-    <form class="" action="/composeblog" method="post">
+    <form class="" action="/composeblog" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label>Title</label>
         <input class="form-control" type="text" name="postTitle">
         <label>Post</label>
         <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
-        <label>Image Path</label>
-        <input class="form-control" type="text" name="postImg">
+        <label>Image File</label><br>
+        <input type="file" name="postImg">
       </div>
       <button class="btn btn-primary" type="submit" name="button">Publish</button>
     </form>
