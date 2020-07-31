@@ -7,8 +7,8 @@ const path = require('path');
 const bcrypt = require('bcrypt');
 const saltRounds = 15;
 const multer = require('multer');
-const upload = multer({dest: __dirname + '/public/imgs/blog'});
-
+const uploadBlog = multer({dest: __dirname + '/public/imgs/blog'});
+const uploadRecipe = multer({dest: __dirname + '/public/imgs/recipe'});
 
 app.set('view engine', 'ejs');
 
@@ -60,7 +60,7 @@ app.get("/blog", function(req, res) {
   }).sort({date: -1});
 });
 
-app.post("/composeblog", upload.single('postImg'), function(req, res){
+app.post("/composeblog", uploadBlog.single('postImg'), function(req, res){
   const blog = new Blog({
       title: req.body.postTitle,
       date: Date.now(),
@@ -139,13 +139,13 @@ app.get("/recipes/recipe/:recipeId", function(req, res) {
   })
 });
 
-app.post("/composerecipe", function(req, res){
+app.post("/composerecipe", uploadRecipe.single('postImg'), function(req, res){
   var ingredients = req.body.postIngredients.toString().split("|");
   var directions = req.body.postDirections.toString().split("|");
   var catagories = req.body.postCatagory.toString().split(",");
   const recipe = new Recipe({
        title: req.body.postTitle,
-       img: req.body.postImg,
+       img: req.file.filename,
        path: req.body.postPath,
        ingredients: ingredients,
        directions: directions,

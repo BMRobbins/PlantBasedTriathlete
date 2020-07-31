@@ -1,16 +1,16 @@
 <%- include("partials/header", {relativePath: ""}); -%>
     <h1>Compose Recipe</h1>
-    <form class="" action="/composerecipe" method="post">
+    <form class="" action="/composerecipe" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label>Title</label>
         <input class="form-control" type="text" name="postTitle">
-        <label>Image Path</label>
-        <input class="form-control" type="text" name="postImg">
-        <label>URL Path</label>
+        <label>Image File</label>
+        <input class="form-control" type="file" name="postImg">
+        <label>URL Path(Title all lowercase no whitespace)</label>
         <input class="form-control" type="text" name="postPath">
-        <label>Ingredients</label>
+        <label>Ingredients(Use | to split up individual entries)</label>
         <textarea class="form-control" name="postIngredients" rows="5" cols="30"></textarea>
-        <label>Directions</label>
+        <label>Directions(Use | to split up individual entries)</label>
         <textarea class="form-control" name="postDirections" rows="5" cols="30"></textarea>
         <label for="postCatagory">Recipe Catagory (Hold shift to select more than one)</label><br>
         <select multiple class="formControl" id="catagory" name="postCatagory">
