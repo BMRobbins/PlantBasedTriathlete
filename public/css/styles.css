@@ -109,8 +109,8 @@ h2 {
  /* Carousel */
  .site-info-image {
     width: auto;
-    height: 375px;
-    max-height: 375px;
+    height: 500px;
+    max-height: 500px;
     margin: auto;
     display: block;
  }
