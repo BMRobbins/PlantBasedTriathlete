@@ -140,13 +140,15 @@ app.get("/recipes/recipe/:recipeId", function(req, res) {
 });
 
 app.post("/composerecipe", uploadRecipe.single('postImg'), function(req, res){
+  var urlPath = _.lowerCase(req.body.postTitle);
+  urlPath = urlPath.replace(/ /g,'');
   var ingredients = req.body.postIngredients.toString().split("|");
   var directions = req.body.postDirections.toString().split("|");
   var catagories = req.body.postCatagory.toString().split(",");
   const recipe = new Recipe({
        title: req.body.postTitle,
        img: req.file.filename,
-       path: req.body.postPath,
+       path: urlPath,
        ingredients: ingredients,
        directions: directions,
        catagory: catagories,

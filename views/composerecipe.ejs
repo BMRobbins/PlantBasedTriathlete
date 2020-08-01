@@ -2,12 +2,10 @@
     <h1>Compose Recipe</h1>
     <form class="" action="/composerecipe" method="post" enctype="multipart/form-data">
       <div class="form-group">
-        <label>Title</label>
+        <label>Title(Must be unique title)</label>
         <input class="form-control" type="text" name="postTitle">
         <label>Image File</label>
         <input class="form-control" type="file" name="postImg">
-        <label>URL Path(Title all lowercase no whitespace)</label>
-        <input class="form-control" type="text" name="postPath">
         <label>Ingredients(Use | to split up individual entries)</label>
         <textarea class="form-control" name="postIngredients" rows="5" cols="30"></textarea>
         <label>Directions(Use | to split up individual entries)</label>
