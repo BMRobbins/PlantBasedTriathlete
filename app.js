@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017l/PlantBasedTriathlete", {useUnifiedT
 const blogSchema = {
   title: String,
   date: Date,
-  content: String,
+  content: [String],
   img: String
 };
 
@@ -61,10 +61,11 @@ app.get("/blog", function(req, res) {
 });
 
 app.post("/composeblog", uploadBlog.single('postImg'), function(req, res){
+  var contents = req.body.postBody.toString().split("|");
   const blog = new Blog({
       title: req.body.postTitle,
       date: Date.now(),
-      content: req.body.postBody,
+      content: contents,
       img: req.file.filename
   });
   blog.save(function(err){

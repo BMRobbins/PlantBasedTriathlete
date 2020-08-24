@@ -175,3 +175,7 @@ h2 {
   white-space: nowrap;
   border: 0;
 }
+
+.text-indent {
+  text-indent: 2em;
+}

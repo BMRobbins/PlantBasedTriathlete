@@ -13,7 +13,9 @@
       <% }else {%>
         <img class="float_l" style="width:35%" src="/imgs/blog/<%= blog.img %>" alt="DaniOnRock">
       <% }%>
-        <p class="fontMontserret"><%= blog.content %></p>
+        <%  blog.content.forEach(function(paragraphContent){ %>
+            <p class="fontMontserret text-indent"><%= paragraphContent %></p>
+        <% })%>
       </div>
       <% counter++; %>
     </div>
